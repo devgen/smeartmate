@@ -87,11 +87,15 @@
 			<version>20140107</version>
 		</dependency>
 
+
+
+		<!-- java server faces -->
 		<!-- https://mvnrepository.com/artifact/javax.faces/jsf-api -->
 		<dependency>
 			<groupId>javax.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>2.1</version>
+			<scope>compile</scope>
 		</dependency>
 
 
@@ -100,14 +104,10 @@
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.14</version>
+			<scope>compile</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>1.0.10</version>
-		</dependency>
+
 
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -115,13 +115,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
@@ -132,6 +126,24 @@
 		</dependency>
 
 
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+		<!-- prime faces -->
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
 		<dependency>
@@ -139,6 +151,7 @@
 			<artifactId>primefaces</artifactId>
 			<version>6.1</version>
 		</dependency>
+
 
 		<!-- hibernate -->
 		<dependency>
