@@ -23,7 +23,7 @@
 		</h:form>
 		<hr />
 		<h4>PrimeFaces</h4>
-		<h:form id="primeForm">
+		<h:form id="primeForm">s
 			<p:inputText id="name" value="#{mainController.primeName}">
 				<p:ajax event="keyup" process="@this" update=":primeForm:nameGroup" />
 			</p:inputText>
@@ -32,5 +32,12 @@
 					rendered="#{not empty mainController.primeName}" />
 			</h:panelGroup>
 		</h:form>
+		<h:panelGroup>
+			<p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;"/>
+ 
+			<p:chart type="line" model="#{chartView.lineModel2}" style="height:300px;"/>
+		</h:panelGroup>
+	
+		
 	</ui:define>
 </ui:composition>
