@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <!-- create-drop  --><!-- update -->
+  <persistence-unit name="heartmate" transaction-type="JTA">
+		<jta-data-source>java:jboss/datasources/heartmate</jta-data-source>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/heartmate" />
+			<property name="hibernate.connection.username" value="heartmate" />
+			<property name="hibernate.connection.password" value="heartmate" />
+			<property name="show_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="packagesToScan" value="de.tum.entities" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />     
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.transaction.flush_before_completion"
+				value="true" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+		</properties>
+	</persistence-unit>   
+	
+	<!-- 2024 JTA -->
+  	<!--  <persistence-unit name="swap_db" transaction-type="JTA">
+		
+		<jta-data-source>java:jboss/datasources/swap_db</jta-data-source>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="transbase.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:transbase://127.0.0.1:2024/swap_db" />
+			<property name="hibernate.connection.username" value="swap_db_user" />
+			<property name="hibernate.connection.password" value="swap_db_user" />
+			<property name="show_sql" value="true" />
+			<property name="hibernate.dialect" value="transbase.hibernate.TransbaseDialect" /> 
+			<property name="packagesToScan" value="de.swap.entities" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />  
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.flush_before_completion"
+				value="true" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+		</properties>
+	</persistence-unit> -->
+	
+	
+	
+	
+	<!-- 	<persistence-unit name="myPU" transaction-type="JTA"> -->
+<!-- 		<properties> -->
+<!-- 			<property name="javax.persistence.schema-generation.database.action" -->
+<!-- 				value="create-drop" />create-drop drop-and-creat -->
+<!-- 			<property name="javax.persistence.schema-generation.create-source" -->
+<!-- 				value="script" /> -->
+<!-- 			<property name="javax.persistence.schema-generation.drop-source" -->
+<!-- 				value="script" /> -->
+<!-- 			<property name="javax.persistence.schema-generation.create-script-source" -->
+<!-- 				value="sql/create.sql" /> -->
+<!-- 			<property name="javax.persistence.schema-generation.drop-script-source" -->
+<!-- 				value="sql/drop.sql" /> -->
+<!-- 			<property name="javax.persistence.sql-load-script-source" -->
+<!-- 				value="sql/load.sql" /> -->
+<!-- 		</properties> -->
+<!-- 	</persistence-unit>  -->
+<!--      <persistence-unit name="myPU" transaction-type="JTA">
+         <class>de.swap.entities.UserEntity</class>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.flush_before_completion"
+				value="true" />
+            
+           
+           <property name="show_sql" value="true" />
+        </properties>
+    </persistence-unit>  JTA-->
+
+    
+    
+</persistence>
