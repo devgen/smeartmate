@@ -1,7 +1,5 @@
 package de.tum.view;
 
-
-
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -11,7 +9,9 @@ import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartSeries;
- 
+import org.primefaces.model.chart.LinearAxis;
+import org.primefaces.model.chart.BarChartSeries;
+
 @ManagedBean
 public class ChartView implements Serializable {
  
@@ -21,10 +21,13 @@ public class ChartView implements Serializable {
 	private static final long serialVersionUID = -6356102226341916730L;
 	private LineChartModel lineModel1;
     private LineChartModel lineModel2;
-     
+    
+    private LineChartModel multiAxisModel;
+
     @PostConstruct
     public void init() {
         createLineModels();
+        createMultiAxisModel();
     }
  
     public LineChartModel getLineModel1() {
@@ -79,6 +82,73 @@ public class ChartView implements Serializable {
         model.addSeries(series2);
          
         return model;
+    }
+    
+    public LineChartModel getMultiAxisModel() {
+        return multiAxisModel;
+    }
+     
+    private void createMultiAxisModel() {
+        multiAxisModel = new LineChartModel();
+ 
+        BarChartSeries boys = new BarChartSeries();
+        boys.setLabel("Steps");
+ 
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+ 
+        LineChartSeries girls = new LineChartSeries();
+        girls.setLabel("Heart Rate");
+        girls.setXaxis(AxisType.X2);
+        girls.setYaxis(AxisType.Y2);
+         
+        girls.set("A", 52);
+        girls.set("B", 60);
+        girls.set("C", 110);
+        girls.set("D", 135);
+        girls.set("E", 120);
+        
+//        LineChartSeries activity = new LineChartSeries();
+//        activity.setLabel("Activity");
+//        activity.setXaxis(AxisType.X3);
+//        activity.setYaxis(AxisType.Y3);
+//         
+//        activity.set("I", 52);
+//        activity.set("II", 60);
+//        activity.set("III", 110);
+//        activity.set("IV", 135);
+//        activity.set("V", 120);
+//        multiAxisModel.addSeries(activity);
+ 
+        multiAxisModel.addSeries(boys);
+        multiAxisModel.addSeries(girls);
+         
+        multiAxisModel.setTitle("Multi Axis Chart");
+        multiAxisModel.setMouseoverHighlight(false);
+         
+        multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+        multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));
+        multiAxisModel.getAxes().put(AxisType.X3, new CategoryAxis("Activity"));
+         
+        Axis yAxis = multiAxisModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Birth");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+                 
+        Axis y2Axis = new LinearAxis("Number");
+        y2Axis.setMin(0);
+        y2Axis.setMax(200);
+        
+        Axis y3Axis = new LinearAxis("Intensity");
+        y3Axis.setMin(0);
+        y3Axis.setMax(200);
+        
+        multiAxisModel.getAxes().put(AxisType.Y2, y2Axis);
+        multiAxisModel.getAxes().put(AxisType.Y3, y3Axis);
+
     }
      
     private LineChartModel initCategoryModel() {

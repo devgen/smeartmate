@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
-import com.example.devgen.model.GatewayMessage;
-import com.example.devgen.settings.MySettings;
+import de.tum.datax.smeartheartapp.model.GatewayMessage;
+import de.tum.datax.smeartheartapp.settings.MySettings;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
