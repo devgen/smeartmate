@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
-public class AudioRecord implements Serializable{
+public class AudioRecordEntity implements Serializable{
 	
 	
 	

@@ -7,12 +7,12 @@ import javax.persistence.PersistenceContext;
 
 import org.jboss.logging.Logger;
 
-import de.tum.dao.local.UserDaoLocal;
-import de.tum.entities.Patient;
+import de.tum.dao.local.PatientEntityDaoLocal;
+import de.tum.entities.PatientEntity;
 
 @Stateless
-@Local({ UserDaoLocal.class })
-public class UserDao implements UserDaoLocal {
+@Local({ PatientEntityDaoLocal.class })
+public class PatientEntityDao implements PatientEntityDaoLocal {
 	
 	
 	private Logger log = Logger.getLogger(this.getClass());
@@ -21,10 +21,10 @@ public class UserDao implements UserDaoLocal {
 	private EntityManager em;
 
 	@Override
-	public Patient getPatienById(String id) {
+	public PatientEntity getPatienById(String id) {
 		// TODO Auto-generated method stub
 		try {
-			Patient patient = em.find(Patient.class, id);
+			PatientEntity patient = em.find(PatientEntity.class, id);
 			return patient;
 		} catch (NullPointerException e) {
 			log.error("Patient with id" + id + "notfound" + e.getMessage());
