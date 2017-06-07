@@ -6,8 +6,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.devgen.gateway.UDPGateway;
-import com.example.devgen.gateway.WebSocketGateway;
+
+import de.tum.datax.smeartheartapp.gateway.UDPGateway;
+import de.tum.datax.smeartheartapp.gateway.WebSocketGateway;
 
 /**
  * Created by Devgen on 21.09.2016.

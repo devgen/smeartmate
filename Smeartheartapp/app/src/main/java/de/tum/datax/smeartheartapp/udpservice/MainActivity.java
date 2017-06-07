@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.devgen.R;
-import com.example.devgen.backgroundservice.MyService;
+import de.tum.datax.smeartheartapp.R;
+import de.tum.datax.smeartheartapp.backgroundservice.MyService;
 
 public class MainActivity extends AppCompatActivity {
 

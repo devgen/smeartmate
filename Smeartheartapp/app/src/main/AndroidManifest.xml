@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="de.tum.datax.smeartheartapp">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -9,8 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity android:name=".udpservice.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         !-- Declaring broadcast receiver for BOOT_COMPLETED event. -->
         <receiver
             android:name=".backgroundservice.MyReceiver"
@@ -35,6 +33,8 @@
         <service
             android:name=".backgroundservice.MyService"
             android:exported="false" />
+
+      <!--  <activity android:name=".udpservice.MainActivity"></activity> -->
     </application>
 
 </manifest>
