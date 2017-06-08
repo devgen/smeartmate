@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class PatientReportEntity implements Serializable {
@@ -17,6 +19,17 @@ public class PatientReportEntity implements Serializable {
 	private String id;
 	
 	
+	
+	@ManyToOne(optional = false)
+	@NotNull
+	private PatientEntity patiententity;
+	
+	public PatientEntity getPatientEntity() {
+		return patiententity;
+	}
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patiententity = patientEntity;
+	}
 	@Column
 	private boolean visitPlaned;
 	

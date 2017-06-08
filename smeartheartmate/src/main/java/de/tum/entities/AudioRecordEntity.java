@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class AudioRecordEntity implements Serializable{
@@ -24,5 +26,34 @@ public class AudioRecordEntity implements Serializable{
 	
 	@Lob
 	private Byte[] file;
+	
+	
+	@ManyToOne(optional = false)
+	@NotNull
+	private PatientEntity patiententity;
+
+	public PatientEntity getPatientEntity() {
+		return patiententity;
+	}
+
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patiententity = patientEntity;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Byte[] getFile() {
+		return file;
+	}
+
+	public void setFile(Byte[] file) {
+		this.file = file;
+	}
 
 }

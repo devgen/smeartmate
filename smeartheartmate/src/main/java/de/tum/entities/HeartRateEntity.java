@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -31,6 +33,17 @@ public class HeartRateEntity implements Serializable {
 	private boolean activity;
 	@Column
 	private boolean sleep;
+	
+	
+	@ManyToOne(optional = false)
+	@NotNull
+	private PatientEntity patiententity;
+	public PatientEntity getPatientEntity() {
+		return patiententity;
+	}
+	public void setPatientEntity(PatientEntity patiententity) {
+		this.patiententity = patiententity;
+	}
 	public String getId() {
 		return id;
 	}

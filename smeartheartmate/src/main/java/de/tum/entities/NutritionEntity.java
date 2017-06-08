@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -27,6 +29,20 @@ public class NutritionEntity implements Serializable {
 	
 	
 	
+	@ManyToOne(optional = false)
+	@NotNull
+	private PatientEntity patiententity;
+	
+	public PatientEntity getPatientEntity() {
+		return patiententity;
+	}
+
+
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patiententity = patientEntity;
+	}
+
+
 	@Column
 	private Date date;
 	
@@ -37,5 +53,48 @@ public class NutritionEntity implements Serializable {
 	
 	@Column
 	private int gained;
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public int getBurnt() {
+		return burnt;
+	}
+
+
+	public void setBurnt(int burnt) {
+		this.burnt = burnt;
+	}
+
+
+	public int getGained() {
+		return gained;
+	}
+
+
+	public void setGained(int gained) {
+		this.gained = gained;
+	}
+	
+	
+	
 	
 }

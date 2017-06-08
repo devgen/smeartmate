@@ -30,7 +30,7 @@ public class WebSocketGateway {
 
     public void start() {
 
-        final String wsuri = "ws://192.168.178.44:8080/websocket-0.0.1-SNAPSHOT/websocket/123123";
+        final String wsuri = "ws://192.168.179.27:8080/smeartheartmate-0.0.1-SNAPSHOT/websocket/123";
 
         try {
             mConnection.connect(wsuri, new WebSocketHandler() {
@@ -59,6 +59,10 @@ public class WebSocketGateway {
 
     private void  stop(){
         mConnection.disconnect();
+    }
+
+    public   void send(String test){
+        mConnection.sendTextMessage(test);
     }
 
 

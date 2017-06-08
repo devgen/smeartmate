@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Smeartheartapp</string>
+    <string name="appwidget_text">Beschwerde erstellen</string>
+    <string name="add_widget">Add widget</string>
+    <string name="appwidget_txt1">Beschwerde</string>
+    <string name="appwidged_but">Aufnehmen</string>
 </resources>

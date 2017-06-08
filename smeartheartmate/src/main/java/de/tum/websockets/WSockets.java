@@ -22,7 +22,7 @@ public class WSockets {
 	
 	@OnOpen
 	public void open(Session session, @PathParam("userid") String userid) {
-
+		log.error(userid);
 		
 
 	}
@@ -30,12 +30,13 @@ public class WSockets {
 	@OnError
 	public void onError(Throwable error) {
 		//log.error("error on websocket" + error.toString());
+		log.error(error.toString());
 	}
 	
 	
 	@OnMessage
 	public void handleMessage(Message message, Session session) {
-		
+		log.error(message.toString());
 	}
 
 }
