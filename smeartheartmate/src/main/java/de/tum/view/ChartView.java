@@ -3,6 +3,8 @@ package de.tum.view;
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.sound.sampled.Line;
+
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
@@ -21,7 +23,9 @@ public class ChartView implements Serializable {
 	private static final long serialVersionUID = -6356102226341916730L;
 	private LineChartModel lineModel1;
 	private LineChartModel lineModel2;
+	private LineChartModel metabolismModel;
 	private LineChartModel multiAxisModel;
+	private LineChartModel stepsModel;
 	private String[] heartData;
 
 	@PostConstruct
@@ -36,6 +40,14 @@ public class ChartView implements Serializable {
 
 	public LineChartModel getLineModel2() {
 		return lineModel2;
+	}
+	
+	public LineChartModel getMetabolismModel() {
+		return metabolismModel;
+	}
+	
+	public LineChartModel getStepsModel(){
+		return stepsModel;
 	}
 
 	private Integer[] getHeartRate() {
@@ -119,8 +131,105 @@ public class ChartView implements Serializable {
 		yAxis.setLabel("Rate");
 		yAxis.setMin(50);
 		yAxis.setMax(150);
+		
+	
+		metabolismModel = initMetaModel();
+		metabolismModel.setTitle("Metabolism");
+		metabolismModel.setLegendPosition("w");
+		metabolismModel.setShowPointLabels(true);
+		metabolismModel.getAxes().put(AxisType.X, new CategoryAxis("Day"));
+		xAxis = metabolismModel.getAxis(AxisType.X);
+		xAxis.setTickAngle(-90);
+		yAxis = metabolismModel.getAxis(AxisType.Y);
+		yAxis.setLabel("Calories");
+		yAxis.setMin(1700);
+		yAxis.setMax(2800);
+		
+		stepsModel = initStepsModel();
+		stepsModel.setTitle("Exercise / Weight");
+		stepsModel.setLegendPosition("w");
+		stepsModel.setShowPointLabels(true);
+		stepsModel.getAxes().put(AxisType.X, new CategoryAxis("Day"));
+		xAxis = stepsModel.getAxis(AxisType.X);
+		xAxis.setTickAngle(-90);
+//		yAxis = stepsModel.getAxis(AxisType.Y);
+//		yAxis.setLabel("Steps");
+//		yAxis.setMin(2000);
+//		yAxis.setMax(11000);
 
 	}
+	
+	
+	
+	private LineChartModel initStepsModel() {
+		LineChartModel model = new LineChartModel();
+
+		String[] dates = new String[] { "01.05.2017","02.05.2017","03.05.2017","04.05.2017","05.05.2017","06.05.2017","07.05.2017","08.05.2017","09.05.2017","10.05.2017","11.05.2017","12.05.2017","13.05.2017","14.05.2017","15.05.2017","16.05.2017","17.05.2017","18.05.2017","19.05.2017","20.05.2017","21.05.2017","22.05.2017","23.05.2017","24.05.2017","25.05.2017","26.05.2017","27.05.2017","28.05.2017","29.05.2017","30.05.2017"};
+
+		ChartSeries stepSeries = new ChartSeries();
+		stepSeries.setLabel("Steps");
+		
+		Integer[] steps = new Integer[]{10977,6040,8890,4445,8120,10094,3095,5823,6451,10053,9666,6602,3182,10364,8613,8847,8256,2215,5550,8096,8438,7260,4490,8277,7107,9433,2154,6012,10838,10349};
+
+		for (int i = 0; i < dates.length; i++) {
+			stepSeries.set(dates[i], steps[i]);
+		}
+		
+		ChartSeries weightSeries = new ChartSeries();
+		weightSeries.setLabel("Weight");
+		Number[] weight = new Number[]{92.7,92.7,92.7,92.7,92.7,92.6,92.6,92.6,92.6,92.6,92.6,92.6,92.6,92.6,93,93,93,93,93,93,92.8,92.8,92.8,92.8,92.8,92.8,92.8,93.1,93.1,93.1};
+		for (int i = 0; i < dates.length; i++) {
+			weightSeries.set(dates[i], weight[i]);
+		}
+		
+		weightSeries.setYaxis(AxisType.Y2);
+
+		model.addSeries(stepSeries);
+		model.addSeries(weightSeries);
+		model.setZoom(true);
+		
+        Axis yAxis = model.getAxis(AxisType.Y);
+        yAxis.setLabel("Steps");
+        yAxis.setMin(2000);
+        yAxis.setMax(12000);
+                 
+        Axis y2Axis = new LinearAxis("kg");
+        y2Axis.setMin(90);
+        y2Axis.setMax(95);
+         
+        model.getAxes().put(AxisType.Y2, y2Axis);
+
+		return model;
+	}
+
+	private LineChartModel initMetaModel() {
+		LineChartModel model = new LineChartModel();
+
+		String[] dates = new String[] { "01.05.2017","02.05.2017","03.05.2017","04.05.2017","05.05.2017","06.05.2017","07.05.2017","08.05.2017","09.05.2017","10.05.2017","11.05.2017","12.05.2017","13.05.2017","14.05.2017","15.05.2017","16.05.2017","17.05.2017","18.05.2017","19.05.2017","20.05.2017","21.05.2017","22.05.2017","23.05.2017","24.05.2017","25.05.2017","26.05.2017","27.05.2017","28.05.2017","29.05.2017","30.05.2017"};
+
+		ChartSeries burntSeries = new ChartSeries();
+		burntSeries.setLabel("Burnt");
+		
+		Integer[] burnt = new Integer[]{2334,2377,2552,2697,2368,2467,2373,2495,2340,2652,2663,2487,2303,2613,2559,2686,2385,2331,2391,2589,2531,2459,2388,2318,2353,2659,2592,2333,2481,2393};
+
+		for (int i = 0; i < dates.length; i++) {
+			burntSeries.set(dates[i], burnt[i]);
+		}
+
+		ChartSeries gainedSeries = new ChartSeries();
+		gainedSeries.setLabel("Gained");
+		Integer[] gained = new Integer[]{1871,2334,2377,2552,2697,2368,2467,2373,2495,2340,2652,2663,2487,2303,2613,2559,2686,2385,2331,2391,2589,2531,2459,2388,2318,2353,2659,2592,2333,2481,2393,2305,2291,2198,2284,2002,2160,1854,1956,2023,2393,2263,2256,1986,2239,2354,2202,1913,2293,1852,2059,2359,2124,2172,2377,2025,2145,2047,2208,1947};
+		for (int i = 0; i < dates.length; i++) {
+			gainedSeries.set(dates[i], gained[i]);
+		}
+
+		model.addSeries(burntSeries);
+		model.addSeries(gainedSeries);
+		model.setZoom(true);
+
+		return model;
+	}
+
 
 	private LineChartModel initLinearModel() {
 		LineChartModel model = new LineChartModel();
@@ -190,18 +299,6 @@ public class ChartView implements Serializable {
 		girls.set("C", 110);
 		girls.set("D", 135);
 		girls.set("E", 120);
-
-		// LineChartSeries activity = new LineChartSeries();
-		// activity.setLabel("Activity");
-		// activity.setXaxis(AxisType.X3);
-		// activity.setYaxis(AxisType.Y3);
-		//
-		// activity.set("I", 52);
-		// activity.set("II", 60);
-		// activity.set("III", 110);
-		// activity.set("IV", 135);
-		// activity.set("V", 120);
-		// multiAxisModel.addSeries(activity);
 
 		multiAxisModel.addSeries(boys);
 		multiAxisModel.addSeries(girls);
