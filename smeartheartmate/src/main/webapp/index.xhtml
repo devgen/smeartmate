@@ -11,6 +11,7 @@
 
 	<ui:define name="body">
 
+		<div id="top"></div>
 		<nav class="nav-extended teal">
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo">smeartMate</a> <a href="#"
@@ -20,39 +21,36 @@
 				<li><a href="patients.html">Patients</a></li>
 				<li><a href="settings.html">Settings</a></li>
 			</ul>
-			<!-- 			<ul class="side-nav" id="mobile-demo">
-				<li><a href="sass.html">Patients</a></li>
-				<li><a href="badges.html">Settings</a></li>
-			</ul>
- -->
 		</div>
 
 		<div class="nav-content">
 			<ul class="tabs tabs-transparent">
 				<li class="tab"><a class="active" href="#irreg">Irregularities<span
 						class="new badge red">6</span></a></li>
-				<li class="tab"><a href="overview.xhtml">Overview</a></li>
-
-<!-- 				<li class="tab"><a href="#overview">Overview</a></li>
- -->				
- <li class="tab"><a href="#test2">Heart Data</a></li>
-				<li class="tab"><a href="#test3">Exercise and Sleep</a></li>
-				<li class="tab"><a href="#test3">Metabolism</a></li>
-				<li class="tab"><a href="#test4">Patient Input</a></li>
-				<li class="tab"><a href="#test4">Patient Information</a></li>
+				<!-- 				<li class="tab"><a href="overview.xhtml">Overview</a></li>
+ -->
+				<li class="tab"><a href="#overview">Overview</a></li>
+				<li class="tab"><a href="#heart">Heart Data</a></li>
+				<li class="tab"><a href="#exercise">Exercise</a></li>
+				<li class="tab"><a href="#meta">Metabolism</a></li>
+				<!-- <li class="tab"><a href="#metaChart">Metabolism</a></li>
+				 -->
+				<li class="tab"><a href="#input">Patient Input</a></li>
+				<li class="tab"><a href="#info">Patient Information</a></li>
 			</ul>
 		</div>
 		</nav>
 
 		<div id="irreg" class="col s12">
+
+
 			<div class="row">
 
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
-							sleeping </span>
+						<span class="white-text">Resting heart rate 140 on 1st May</span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#hearttag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
@@ -62,10 +60,23 @@
 
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
+						<span class="white-text">Resting heart rate 90 while
 							sleeping </span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#hearttag" class="waves-effect waves-light btn"> <i
+								class="material-icons right">assessment</i>Go to
+							</a> <a class="waves-effect waves-light btn"><i
+								class="material-icons right">done</i>close</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col s3">
+					<div class="card-panel red lighten-1">
+						<span class="white-text">Gained unusually less calories on
+							1st May </span>
+						<div class="card-action">
+							<a href="#metatag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
@@ -74,10 +85,10 @@
 				</div>
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
-							sleeping </span>
+						<span class="white-text">Exercise low on 18th May sleeping
+						</span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#stepstag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
@@ -86,82 +97,122 @@
 				</div>
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
-							sleeping </span>
+						<span class="white-text">Exercise low on 27th May sleeping
+						</span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#stepstag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
 						</div>
 					</div>
 				</div>
+
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
-							sleeping </span>
+						<span class="white-text">Unusual weight loss on 28th May</span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#stepstag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
 						</div>
 					</div>
 				</div>
+
 				<div class="col s3">
 					<div class="card-panel red lighten-1">
-						<span class="white-text">Resting heart rate 150 while
-							sleeping </span>
+						<span class="white-text">Audio message on 30th May</span>
 						<div class="card-action">
-							<a class="waves-effect waves-light btn"> <i
+							<a href="#audiotag" class="waves-effect waves-light btn"> <i
 								class="material-icons right">assessment</i>Go to
 							</a> <a class="waves-effect waves-light btn"><i
 								class="material-icons right">done</i>close</a>
 						</div>
 					</div>
 				</div>
+
 
 
 			</div>
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br />
+			<div id="hearttag"></div>
+			<p:chart type="line" model="#{chartView.lineModel2}"
+				style="height:700px;" />
+			<a href="#top" class="waves-effect waves-light btn"> <i
+				class="material-icons right">assessment</i>Back
+			</a> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br />
+			<div id="metatag"></div>
+			<p:chart type="line" model="#{chartView.metabolismModel}"
+				style="height:400px;" />
+			<a href="#top" class="waves-effect waves-light btn"> <i
+				class="material-icons right">assessment</i>Back
+			</a> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br />
+			<div id="stepstag"></div>
+			<p:chart type="line" model="#{chartView.stepsModel}"
+				style="height:400px;" />
+			<a href="#top" class="waves-effect waves-light btn"> <i
+				class="material-icons right">assessment</i>Back
+			</a> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> <br /> <br /> <br />
+			<div id="audiotag"></div>
+			<h4>Audio message from 30th May</h4>
+			<!-- 	<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video> -->
+
+			<audio controls="controls"> Your browser does not support the
+			<code>audio</code> element. <source src="incident.mov"
+				type="audio/wav" /> </audio>
+			<br />
+			<!-- 			<a class="waves-effect waves-light btn"> <i
+								class="large material-icons right">play_circle_outline</i>Play
+							</a>
+ -->
+			<a href="#top" class="waves-effect waves-light btn"> <i
+				class="material-icons right">assessment</i>Back
+			</a> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+			<!-- 				<p:media value="/resources/demo/media/sample-mov.mov" width="190" height="250">
+    <f:param name="autoPlay" value="false" />
+</p:media> -->
+
+
 		</div>
 		<div id="overview" class="col s12">
+			<!-- 			<p:chart type="line" model="#{chartView.lineModel2}"
+				style="height:700px;" />
+				<p:chart type="line" model="#{chartView.metabolismModel}"
+					style="height:400px;" />
 
-			<p:chart type="line" model="#{chartView.lineModel1}"
-				style="height:300px;" />
-<!-- 
-			<p:chart type="line" model="#{chartView.lineModel2}"
-				style="height:300px;" />
+			<p:chart type="line" model="#{chartView.stepsModel}"
+				style="height:400px;" />
+ -->
+		</div>
 
-			<p:chart type="line" model="#{chartView.multiAxisModel}"
-				style="height:400px;" /> -->
+		<div id="heart" class="col s12">Heart data</div>
+		<div id="exercise" class="col s12">Exercise</div>
+		<div id="meta" class="col s12">Meta</div>
+		<div id="input" class="col s12">
+			<h4>Audio message from 30th May</h4>
+			<br />
+			<audio controls="controls"> Your browser does not support the
+			<code>audio</code> element. <source src="incident.mov"
+				type="audio/wav" /> </audio>
+			<br /> <br /> <br /> <br /> <br /> <br />
 
 		</div>
-		<div id="test3" class="col s12">
-			Test 3
-			<h:form id="jsfForm">
-				<h:inputText id="name" value="#{mainController.name}" />
-				<h:commandButton value="Say Hi">
-					<f:ajax execute="name" render=":jsfForm:nameGroup" />
-				</h:commandButton>
-				<br />
-				<h:panelGroup id="nameGroup">
-					<h:outputText value="Hi #{mainController.name}!!"
-						rendered="#{not empty mainController.name}" />
-				</h:panelGroup>
-			</h:form>
-			<hr />
-
-			<h:form id="primeForm">
-				<p:inputText id="name" value="#{mainController.primeName}">
-					<p:ajax event="keyup" process="@this" update=":primeForm:nameGroup" />
-				</p:inputText>
-				<h:panelGroup id="nameGroup">
-					<h:outputText value="Hi #{mainController.primeName}!!"
-						rendered="#{not empty mainController.primeName}" />
-				</h:panelGroup>
-			</h:form>
-		</div>
-		<div id="test4" class="col s12">Test 4</div>
+		<div id="info" class="col s12">Info</div>
 
 		<footer class="page-footer teal lighten-3">
 		<div class="container">
@@ -172,12 +223,12 @@
 						assistant</p>
 				</div>
 				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text">Links</h5>
+					<h5 class="white-text"></h5>
 					<ul>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"></a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"></a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"></a></li>
+						<li><a class="grey-text text-lighten-3" href="#!"></a></li>
 					</ul>
 				</div>
 			</div>
