@@ -100,7 +100,7 @@ public class UDPGateway {
                     ds = new DatagramSocket();
                     ds.setBroadcast(true);
 
-                    InetAddress serverAddr = InetAddress.getByName(MySettings.BROADCAST_IP);
+                    InetAddress serverAddr = InetAddress.getByName(MySettings.SERVER_ADRESS);
                     byte[] byteMsg = new byte[messageForSend.getBytes("UTF-8").length];
                     byteMsg = messageForSend.getBytes("UTF-8");
 

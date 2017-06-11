@@ -30,6 +30,8 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
                 android:id="@+id/message_test" />
 
 
@@ -47,8 +49,8 @@
                 android:id="@+id/qDiagnosticTreat"
                 android:layout_height="wrap_content"
                 android:hint="@string/qDiagnosticTreat"
-                android:inputType="text"
-                android:lines="5"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent"
                 android:layout_weight="0.30">
             </EditText>
@@ -56,8 +58,8 @@
                 android:id="@+id/generalInput"
                 android:layout_height="wrap_content"
                 android:hint="@string/generalInput"
-                android:inputType="text"
-                android:lines="5"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent"
                 android:layout_weight="0.300">
             </EditText>
@@ -65,10 +67,41 @@
                 android:id="@+id/famMedHistory"
                 android:layout_height="wrap_content"
                 android:hint="@string/famMedHistory"
-                android:inputType="text"
-                android:lines="5"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent">
             </EditText>
+
+
+            <TextView
+                android:text="@string/empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:id="@+id/emp_1" />
+
+
+            <TextView
+                android:text="@string/generalSymtopmsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:id="@+id/general_sym" />
+
 
             <CheckBox android:id="@+id/newAllLastVis"
                 android:layout_width="wrap_content"
@@ -88,6 +121,36 @@
                 android:text="@string/headache"
                 />
 
+
+            <TextView
+            android:text="@string/specificSymtopmsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="35dp"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:id="@+id/general_specific_sym" />
+
+
+            <TextView
+                android:text="@string/specificSymtopmsSubTitle_heart_lungs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/general_specific_sym_heart_lungs" />
+
             <CheckBox android:id="@+id/dizziness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,6 +169,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/agonalRespiration"
                 />
+
+            <TextView
+                android:text="@string/specificSymtopmsSubTitle_digestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/general_specific_sym_degist" />
 
 
             <CheckBox android:id="@+id/experienceConstipation"
@@ -142,6 +219,21 @@
                 />
 
 
+            <TextView
+                android:text="@string/specificSymtopmsSubTitle_bones_joints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/general_specific_sym_bones_joins"/>
+
+
             <CheckBox android:id="@+id/experienceLimping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -170,6 +262,22 @@
                 android:text="@string/jointPain"
                 />
 
+
+            <TextView
+                android:text="@string/specificSymtopmsSubTitle_skin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/general_specific_sym_rednes" />
+
+
             <CheckBox android:id="@+id/expRedness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,20 +293,56 @@
                 />
 
 
+            <TextView
+                android:text="@string/specificSymtopmsDescriptionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:id="@+id/general_specific_sym_descr_title" />
+
+
+            <TextView
+                android:text="@string/specificSymtopmsDescriptionSubTitle_symptopms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:id="@+id/general_specific_sym_descr" />
+
+
+
             <EditText
                 android:id="@+id/syncpTdescription"
                 android:layout_height="wrap_content"
                 android:hint="@string/syncpTdescription"
-                android:inputType="text"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent">
             </EditText>
+
+
+
+
 
             <EditText
                 android:id="@+id/symptomDuration"
                 android:layout_height="wrap_content"
                 android:hint="@string/symptomDuration"
-                android:inputType="text"
-                android:lines="5"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent">
             </EditText>
 
@@ -206,10 +350,22 @@
                 android:id="@+id/symptomSeverity"
                 android:layout_height="wrap_content"
                 android:hint="@string/symptomSeverity"
-                android:inputType="text"
-                android:lines="5"
+                android:inputType=""
+                android:lines="3"
                 android:layout_width="fill_parent">
             </EditText>
+
+
+
+
+
+            <Button
+                android:id="@+id/ButtonSendFeedback"
+                android:layout_height="wrap_content"
+                android:text="@string/reportbutton"
+                android:onClick="sendReport"
+                android:layout_width="fill_parent">
+            </Button>
 
 
 

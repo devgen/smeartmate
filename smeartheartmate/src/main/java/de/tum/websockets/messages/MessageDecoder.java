@@ -14,8 +14,7 @@ public class MessageDecoder implements Decoder.Text<Message>{
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
