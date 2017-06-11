@@ -14,166 +14,335 @@ import org.primefaces.model.chart.BarChartSeries;
 
 @ManagedBean
 public class ChartView implements Serializable {
- 
-    /**
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6356102226341916730L;
 	private LineChartModel lineModel1;
-    private LineChartModel lineModel2;
-    
-    private LineChartModel multiAxisModel;
+	private LineChartModel lineModel2;
+	private LineChartModel multiAxisModel;
+	private String[] heartData;
 
-    @PostConstruct
-    public void init() {
-        createLineModels();
-        createMultiAxisModel();
-    }
- 
-    public LineChartModel getLineModel1() {
-        return lineModel1;
-    }
- 
-    public LineChartModel getLineModel2() {
-        return lineModel2;
-    }
-     
-    private void createLineModels() {
-        lineModel1 = initLinearModel();
-        lineModel1.setTitle("Linear Chart");
-        lineModel1.setLegendPosition("e");
-        Axis yAxis = lineModel1.getAxis(AxisType.Y);
-        yAxis.setMin(0);
-        yAxis.setMax(10);
-         
-        lineModel2 = initCategoryModel();
-        lineModel2.setTitle("Category Chart");
-        lineModel2.setLegendPosition("e");
-        lineModel2.setShowPointLabels(true);
-        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
-        yAxis = lineModel2.getAxis(AxisType.Y);
-        yAxis.setLabel("Births");
-        yAxis.setMin(0);
-        yAxis.setMax(200);
-    }
-     
-    private LineChartModel initLinearModel() {
-        LineChartModel model = new LineChartModel();
- 
-        LineChartSeries series1 = new LineChartSeries();
-        series1.setLabel("Series 1");
- 
-        series1.set(1, 2);
-        series1.set(2, 1);
-        series1.set(3, 3);
-        series1.set(4, 6);
-        series1.set(5, 8);
- 
-        LineChartSeries series2 = new LineChartSeries();
-        series2.setLabel("Series 2");
- 
-        series2.set(1, 6);
-        series2.set(2, 3);
-        series2.set(3, 2);
-        series2.set(4, 7);
-        series2.set(5, 9);
- 
-        model.addSeries(series1);
-        model.addSeries(series2);
-         
-        return model;
-    }
-    
-    public LineChartModel getMultiAxisModel() {
-        return multiAxisModel;
-    }
-     
-    private void createMultiAxisModel() {
-        multiAxisModel = new LineChartModel();
- 
-        BarChartSeries boys = new BarChartSeries();
-        boys.setLabel("Steps");
- 
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
- 
-        LineChartSeries girls = new LineChartSeries();
-        girls.setLabel("Heart Rate");
-        girls.setXaxis(AxisType.X2);
-        girls.setYaxis(AxisType.Y2);
-         
-        girls.set("A", 52);
-        girls.set("B", 60);
-        girls.set("C", 110);
-        girls.set("D", 135);
-        girls.set("E", 120);
-        
-//        LineChartSeries activity = new LineChartSeries();
-//        activity.setLabel("Activity");
-//        activity.setXaxis(AxisType.X3);
-//        activity.setYaxis(AxisType.Y3);
-//         
-//        activity.set("I", 52);
-//        activity.set("II", 60);
-//        activity.set("III", 110);
-//        activity.set("IV", 135);
-//        activity.set("V", 120);
-//        multiAxisModel.addSeries(activity);
- 
-        multiAxisModel.addSeries(boys);
-        multiAxisModel.addSeries(girls);
-         
-        multiAxisModel.setTitle("Multi Axis Chart");
-        multiAxisModel.setMouseoverHighlight(false);
-         
-        multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
-        multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));
-        multiAxisModel.getAxes().put(AxisType.X3, new CategoryAxis("Activity"));
-         
-        Axis yAxis = multiAxisModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Birth");
-        yAxis.setMin(0);
-        yAxis.setMax(200);
-                 
-        Axis y2Axis = new LinearAxis("Number");
-        y2Axis.setMin(0);
-        y2Axis.setMax(200);
-        
-        Axis y3Axis = new LinearAxis("Intensity");
-        y3Axis.setMin(0);
-        y3Axis.setMax(200);
-        
-        multiAxisModel.getAxes().put(AxisType.Y2, y2Axis);
-        multiAxisModel.getAxes().put(AxisType.Y3, y3Axis);
+	@PostConstruct
+	public void init() {
+		createLineModels();
+		createMultiAxisModel();
+	}
 
-    }
-     
-    private LineChartModel initCategoryModel() {
-        LineChartModel model = new LineChartModel();
- 
-        ChartSeries boys = new ChartSeries();
-        boys.setLabel("Boys");
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
- 
-        ChartSeries girls = new ChartSeries();
-        girls.setLabel("Girls");
-        girls.set("2004", 52);
-        girls.set("2005", 60);
-        girls.set("2006", 110);
-        girls.set("2007", 90);
-        girls.set("2008", 120);
- 
-        model.addSeries(boys);
-        model.addSeries(girls);
-         
-        return model;
-    }
- 
+	public LineChartModel getLineModel1() {
+		return lineModel1;
+	}
+
+	public LineChartModel getLineModel2() {
+		return lineModel2;
+	}
+
+	private Integer[] getHeartRate() {
+		return new Integer[] { 64, 64, 64, 63, 64, 62, 63, 64, 64, 64, 64, 62, 63, 62, 64, 62, 64, 63, 62, 64, 64, 62,
+				63, 63, 63, 63, 64, 62, 63, 64, 62, 72, 68, 70, 78, 82, 83, 78, 66, 78, 66, 68, 87, 71, 76, 94, 92, 76,
+				64, 64, 62, 63, 63, 63, 63, 64, 66, 81, 71, 77, 99, 79, 80, 79, 77, 77, 68, 77, 77, 77, 74, 74, 64, 64,
+				62, 63, 63, 63, 63, 64, 66, 79, 82, 72, 77, 68, 97, 73, 79, 77, 77, 72, 83, 100, 81, 81, 64, 64, 62, 63,
+				63, 63, 63, 64, 66, 67, 77, 77, 70, 77, 99, 77, 77, 77, 86, 77, 75, 99, 77, 77, 64, 64, 62, 63, 63, 63,
+				63, 64, 66, 89, 82, 74, 87, 85, 100, 92, 89, 80, 75, 85, 77, 74, 69, 77, 64, 64, 62, 63, 63, 63, 63, 64,
+				66, 76, 87, 77, 77, 78, 82, 77, 68, 78, 83, 83, 82, 78, 77, 76, 64, 64, 62, 63, 63, 63, 63, 64, 66, 77,
+				79, 89, 88, 95, 72, 78, 77, 76, 84, 67, 99, 91, 69, 87, 64, 64, 62, 63, 63, 63, 63, 64, 66, 70, 77, 71,
+				77, 86, 77, 73, 77, 77, 77, 81, 83, 73, 89, 86, 64, 64, 62, 63, 63, 63, 63, 64, 66, 77, 77, 67, 67, 75,
+				77, 66, 70, 77, 77, 71, 71, 77, 70, 77, 64, 64, 62, 63, 63, 63, 63, 64, 66, 77, 71, 87, 80, 77, 67, 94,
+				77, 77, 77, 79, 77, 77, 71, 77, 64, 64, 62, 63, 63, 63, 63, 64, 66, 71, 77, 77, 69, 77, 77, 77, 77, 73,
+				75, 77, 77, 77, 77, 87, 64, 64, 62, 63, 63, 63, 63, 64, 66, 98, 76, 79, 77, 79, 66, 77, 74, 78, 93, 71,
+				82, 77, 74, 99, 64, 64, 62, 63, 63, 63, 63, 64, 66, 66, 77, 74, 73, 78, 84, 77, 77, 77, 74, 76, 79, 70,
+				66, 72, 64, 64, 62, 63, 63, 63, 63, 64, 66, 75, 84, 76, 76, 78, 68, 69, 79, 84, 74, 88, 76, 83, 78, 76,
+				64, 64, 62, 63, 63, 63, 63, 64, 66, 68, 73, 97, 81, 99, 82, 73, 71, 78, 76, 87, 76, 70, 76, 87, 64, 64,
+				62, 63, 63, 63, 63, 64, 66, 93, 68, 73, 79, 75, 76, 76, 76, 76, 68, 74, 95, 83, 98, 76, 64, 64, 62, 63,
+				63, 63, 63, 64, 66, 97, 98, 96, 76, 72, 72, 70, 67, 72, 72, 81, 83, 72, 68, 67, 64, 64, 62, 63, 63, 63,
+				63, 64, 66, 82, 84, 76, 77, 84, 72, 72, 72, 70, 72, 81, 84, 80, 77, 67, 64, 64, 62, 63, 63, 63, 63, 64,
+				66, 85, 72, 75, 72, 71, 83, 83, 67, 72, 73, 89, 72, 72, 84, 72, 64, 64, 62, 63, 63, 63, 63, 64, 66, 72,
+				83, 72, 72, 77, 72, 66, 71, 79, 72, 73, 84, 77, 68, 81, 64, 64, 62, 63, 63, 63, 63, 64, 66, 99, 99, 70,
+				75, 78, 72, 68, 72, 72, 82, 83, 82, 72, 79, 70, 64, 64, 62, 63, 63, 63, 63, 64, 66, 100, 86, 70, 89, 85,
+				96, 69, 72, 81, 69, 97, 91, 79, 72, 66, 64, 64, 62, 63, 63, 63, 63, 64, 66, 76, 96, 70, 87, 95, 72, 86,
+				72, 72, 82, 70, 80, 66, 72, 72, 64, 64, 62, 63, 63, 63, 63, 64, 66, 97, 72, 72, 72, 66, 88, 72, 74, 76,
+				77, 71, 73, 71, 72, 82, 64, 64, 62, 63, 63, 63, 63, 64, 66, 84, 98, 72, 72, 73, 85, 72, 75, 72, 77, 76,
+				95, 72, 76, 76, 64, 64, 62, 63, 63, 63, 63, 64, 66, 84, 79, 72, 73, 74, 100, 72, 77, 86, 84, 76, 82, 72,
+				77, 78, 64, 64, 62, 63, 63, 63, 63, 64, 66, 94, 67, 79, 72, 67, 100, 73, 84, 72, 80, 72, 82, 72, 67, 77,
+				64, 64, 62, 63, 63, 63, 63, 64, 66, 72, 87, 73, 72, 88, 81, 69, 72, 73, 71, 84, 75, 77, 78, 68, 77, 68,
+				72, 72, 77, 80, 84, 72, 85, 86, 85, 77, 69, 69, 70, 72, 70, 72, 72, 66, 72, 73, 77, 67 };
+	}
+
+	private Integer[] getRestingRate() {
+		return new Integer[] { 60, 65, 65, 60, 60, 62, 62, 60, 60, 60, 62, 61, 62, 71, 71, 140, 71, 70, 70, 64, 60, 61,
+				61, 60, 60, 60, 61, 60, 61, 61, 60, 62, 62, 63, 62, 64, 63, 62, 62, 62, 63, 63, 62, 63, 63, 64, 62, 63,
+				64, 60, 61, 61, 60, 60, 60, 61, 63, 63, 62, 62, 62, 63, 64, 63, 63, 62, 63, 64, 63, 64, 63, 62, 64, 60,
+				61, 61, 60, 60, 60, 61, 63, 64, 62, 63, 64, 64, 62, 64, 63, 63, 64, 63, 64, 77, 62, 62, 64, 60, 61, 61,
+				60, 60, 60, 61, 63, 63, 62, 62, 63, 62, 73, 64, 62, 64, 63, 64, 63, 63, 64, 62, 64, 60, 61, 61, 60, 60,
+				60, 61, 63, 64, 63, 63, 64, 63, 63, 62, 63, 64, 64, 64, 62, 62, 63, 62, 64, 60, 61, 61, 60, 60, 60, 61,
+				63, 62, 64, 63, 63, 63, 65, 64, 64, 66, 63, 63, 63, 66, 64, 64, 64, 60, 61, 61, 60, 60, 60, 61, 63, 65,
+				65, 64, 64, 66, 64, 63, 65, 66, 63, 63, 64, 65, 63, 63, 64, 60, 61, 61, 60, 60, 60, 61, 63, 65, 65, 63,
+				65, 66, 63, 64, 65, 64, 66, 66, 66, 64, 64, 63, 64, 60, 61, 61, 60, 60, 60, 61, 63, 65, 65, 64, 66, 66,
+				63, 65, 63, 65, 65, 65, 64, 63, 64, 66, 64, 60, 61, 61, 60, 60, 60, 61, 63, 64, 63, 65, 65, 66, 65, 63,
+				66, 66, 64, 63, 63, 63, 65, 63, 64, 60, 61, 61, 60, 60, 60, 61, 63, 65, 65, 64, 63, 64, 63, 64, 65, 64,
+				65, 64, 66, 64, 64, 63, 64, 60, 61, 61, 60, 60, 60, 61, 63, 66, 64, 63, 66, 64, 65, 66, 64, 65, 63, 66,
+				64, 63, 63, 64, 64, 60, 61, 61, 60, 60, 60, 61, 63, 64, 66, 64, 63, 65, 65, 64, 65, 65, 64, 63, 65, 64,
+				63, 65, 64, 60, 61, 61, 60, 60, 60, 61, 63, 66, 66, 64, 65, 66, 66, 64, 65, 66, 63, 65, 65, 66, 64, 66,
+				64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 60, 60, 60, 61, 61, 61, 61, 61, 61, 61, 60, 60, 60, 60, 64, 60,
+				61, 61, 60, 60, 60, 61, 63, 60, 61, 61, 61, 60, 61, 60, 61, 61, 61, 61, 60, 60, 61, 60, 64, 60, 61, 61,
+				60, 60, 60, 61, 63, 61, 60, 61, 61, 60, 60, 60, 60, 60, 61, 61, 61, 61, 60, 61, 64, 60, 61, 61, 60, 60,
+				60, 61, 63, 60, 60, 61, 60, 60, 60, 61, 61, 61, 61, 60, 61, 61, 60, 60, 64, 60, 61, 61, 60, 60, 60, 61,
+				63, 60, 60, 61, 61, 60, 60, 60, 60, 61, 61, 61, 61, 60, 61, 60, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60,
+				60, 61, 60, 60, 61, 60, 61, 61, 61, 60, 60, 60, 61, 60, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 61,
+				61, 61, 60, 61, 60, 61, 60, 60, 61, 61, 60, 61, 64, 60, 61, 61, 60, 60, 60, 61, 63, 61, 60, 61, 61, 60,
+				61, 61, 60, 61, 61, 61, 60, 61, 61, 60, 64, 60, 61, 61, 60, 60, 60, 61, 63, 61, 60, 60, 60, 60, 60, 60,
+				60, 60, 60, 60, 60, 61, 61, 61, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 61, 60, 61, 60, 60, 60, 60,
+				60, 60, 60, 60, 60, 60, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 61, 61, 60, 60, 60, 60, 60, 61, 61,
+				61, 60, 60, 60, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 60, 61, 60, 61, 60, 60, 61, 61, 60, 60, 60,
+				60, 61, 64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 60, 61, 61, 61, 60, 61, 60, 61, 60, 61, 60, 60, 61,
+				64, 60, 61, 61, 60, 60, 60, 61, 63, 60, 61, 61, 61, 61, 60, 61, 60, 61, 60, 60, 60, 60, 61, 61, 61, 60,
+				60, 61, 60, 60, 61, 61, 61, 60, 60, 61, 61, 60, 60, 61, 61, 60, 61, 61, 60, 61, 60, 60 };
+	}
+
+	private void createLineModels() {
+		lineModel1 = initLinearModel();
+		lineModel1.setTitle("Heart rate / Resting heart rate / Activity (hour)");
+		lineModel1.setLegendPosition("e");
+		Axis yAxis = lineModel1.getAxis(AxisType.Y);
+		yAxis.setMin(50);
+		yAxis.setMax(90);
+
+		lineModel2 = initCategoryModel();
+		lineModel2.setTitle("Heart rate / Resting heart rate / Activity (hour)");
+		lineModel2.setLegendPosition("w");
+		lineModel2.setShowPointLabels(true);
+		lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Day, Hour"));
+		Axis xAxis = lineModel2.getAxis(AxisType.X);
+		xAxis.setTickAngle(-90);
+		yAxis = lineModel2.getAxis(AxisType.Y);
+		yAxis.setLabel("Rate");
+		yAxis.setMin(50);
+		yAxis.setMax(150);
+
+	}
+
+	private LineChartModel initLinearModel() {
+		LineChartModel model = new LineChartModel();
+
+		LineChartSeries series1 = new LineChartSeries();
+		series1.setLabel("Heart rate");
+
+		// getHeartDate();
+		Integer[] heartRate = getHeartRate();
+
+		String[] dates = new String[] { "01.05.17 00:00", "01.05.17 01:00", "01.05.17 02:00", "01.05.17 03:00",
+				"01.05.17 04:00", "01.05.17 05:00", "01.05.17 06:00", "01.05.17 07:00", "01.05.17 08:00",
+				"01.05.17 09:00", "01.05.17 10:00", "01.05.17 11:00", "01.05.17 12:00", "01.05.17 13:00",
+				"01.05.17 14:00", "01.05.17 15:00", "01.05.17 16:00", "01.05.17 17:00", "01.05.17 18:00",
+				"01.05.17 19:00", "01.05.17 20:00", "01.05.17 21:00", "01.05.17 22:00", "01.05.17 23:00",
+				"02.05.17 00:00", "02.05.17 01:00", "02.05.17 02:00", "02.05.17 03:00", "02.05.17 04:00",
+				"02.05.17 05:00", "02.05.17 06:00", "02.05.17 07:00", "02.05.17 08:00", "02.05.17 09:00",
+				"02.05.17 10:00", "02.05.17 11:00", "02.05.17 12:00", "02.05.17 13:00", "02.05.17 14:00",
+				"02.05.17 15:00", "02.05.17 16:00", "02.05.17 17:00", "02.05.17 18:00", "02.05.17 19:00",
+				"02.05.17 20:00", "02.05.17 21:00", "02.05.17 22:00", "02.05.17 23:00", "03.05.17 00:00",
+				"03.05.17 01:00", "03.05.17 02:00", "03.05.17 03:00", "03.05.17 04:00", "03.05.17 05:00",
+				"03.05.17 06:00", "03.05.17 07:00", "03.05.17 08:00", "03.05.17 09:00", "03.05.17 10:00",
+				"03.05.17 11:00", "03.05.17 12:00", "03.05.17 13:00", "03.05.17 14:00", "03.05.17 15:00",
+				"03.05.17 16:00", "03.05.17 17:00", "03.05.17 18:00", "03.05.17 19:00", "03.05.17 20:00",
+				"03.05.17 21:00", "03.05.17 22:00", "03.05.17 23:00" };
+
+		for (int i = 0; i < dates.length; i++) {
+			series1.set(dates[i], heartRate[i]);
+		}
+
+		// LineChartSeries series2 = new LineChartSeries();
+		// series2.setLabel("Resting heart rate");
+		//
+		// series2.set(1, 6);
+
+		model.setZoom(true);
+		model.addSeries(series1);
+
+		// model.addSeries(series2);
+
+		return model;
+	}
+
+	public LineChartModel getMultiAxisModel() {
+		return multiAxisModel;
+	}
+
+	private void createMultiAxisModel() {
+		multiAxisModel = new LineChartModel();
+
+		BarChartSeries boys = new BarChartSeries();
+		boys.setLabel("Steps");
+
+		boys.set("2004", 120);
+		boys.set("2005", 100);
+		boys.set("2006", 44);
+		boys.set("2007", 150);
+		boys.set("2008", 25);
+
+		LineChartSeries girls = new LineChartSeries();
+		girls.setLabel("Heart Rate");
+		girls.setXaxis(AxisType.X2);
+		girls.setYaxis(AxisType.Y2);
+
+		girls.set("A", 52);
+		girls.set("B", 60);
+		girls.set("C", 110);
+		girls.set("D", 135);
+		girls.set("E", 120);
+
+		// LineChartSeries activity = new LineChartSeries();
+		// activity.setLabel("Activity");
+		// activity.setXaxis(AxisType.X3);
+		// activity.setYaxis(AxisType.Y3);
+		//
+		// activity.set("I", 52);
+		// activity.set("II", 60);
+		// activity.set("III", 110);
+		// activity.set("IV", 135);
+		// activity.set("V", 120);
+		// multiAxisModel.addSeries(activity);
+
+		multiAxisModel.addSeries(boys);
+		multiAxisModel.addSeries(girls);
+
+		multiAxisModel.setTitle("Multi Axis Chart");
+		multiAxisModel.setMouseoverHighlight(false);
+
+		multiAxisModel.getAxes().put(AxisType.X, new CategoryAxis("Years"));
+		multiAxisModel.getAxes().put(AxisType.X2, new CategoryAxis("Period"));
+		multiAxisModel.getAxes().put(AxisType.X3, new CategoryAxis("Activity"));
+
+		Axis yAxis = multiAxisModel.getAxis(AxisType.Y);
+		yAxis.setLabel("Birth");
+		yAxis.setMin(0);
+		yAxis.setMax(200);
+
+		Axis y2Axis = new LinearAxis("Number");
+		y2Axis.setMin(0);
+		y2Axis.setMax(200);
+
+		Axis y3Axis = new LinearAxis("Intensity");
+		y3Axis.setMin(0);
+		y3Axis.setMax(200);
+
+		multiAxisModel.getAxes().put(AxisType.Y2, y2Axis);
+		multiAxisModel.getAxes().put(AxisType.Y3, y3Axis);
+
+	}
+
+	private LineChartModel initCategoryModel() {
+		LineChartModel model = new LineChartModel();
+
+		Integer[] heartRate = getHeartRate();
+
+		String[] dates = new String[] { "01.05.17 00:00", "01.05.17 01:00", "01.05.17 02:00", "01.05.17 03:00",
+				"01.05.17 04:00", "01.05.17 05:00", "01.05.17 06:00", "01.05.17 07:00", "01.05.17 08:00",
+				"01.05.17 09:00", "01.05.17 10:00", "01.05.17 11:00", "01.05.17 12:00", "01.05.17 13:00",
+				"01.05.17 14:00", "01.05.17 15:00", "01.05.17 16:00", "01.05.17 17:00", "01.05.17 18:00",
+				"01.05.17 19:00", "01.05.17 20:00", "01.05.17 21:00", "01.05.17 22:00", "01.05.17 23:00",
+				"02.05.17 00:00", "02.05.17 01:00", "02.05.17 02:00", "02.05.17 03:00", "02.05.17 04:00",
+				"02.05.17 05:00", "02.05.17 06:00", "02.05.17 07:00", "02.05.17 08:00", "02.05.17 09:00",
+				"02.05.17 10:00", "02.05.17 11:00", "02.05.17 12:00", "02.05.17 13:00", "02.05.17 14:00",
+				"02.05.17 15:00", "02.05.17 16:00", "02.05.17 17:00", "02.05.17 18:00", "02.05.17 19:00",
+				"02.05.17 20:00", "02.05.17 21:00", "02.05.17 22:00", "02.05.17 23:00", "03.05.17 00:00",
+				"03.05.17 01:00", "03.05.17 02:00", "03.05.17 03:00", "03.05.17 04:00", "03.05.17 05:00",
+				"03.05.17 06:00", "03.05.17 07:00", "03.05.17 08:00", "03.05.17 09:00", "03.05.17 10:00",
+				"03.05.17 11:00", "03.05.17 12:00", "03.05.17 13:00", "03.05.17 14:00", "03.05.17 15:00",
+				"03.05.17 16:00", "03.05.17 17:00", "03.05.17 18:00", "03.05.17 19:00", "03.05.17 20:00",
+				"03.05.17 21:00", "03.05.17 22:00", "03.05.17 23:00" };
+
+		ChartSeries heartRateSeries = new ChartSeries();
+		heartRateSeries.setLabel("Heart rate");
+
+		for (int i = 0; i < dates.length; i++) {
+			heartRateSeries.set(dates[i], heartRate[i]);
+		}
+
+		ChartSeries restingRateSeries = new ChartSeries();
+		restingRateSeries.setLabel("Resting heart rate");
+		Integer[] restingRates = getRestingRate();
+		for (int i = 0; i < dates.length; i++) {
+			restingRateSeries.set(dates[i], restingRates[i]);
+		}
+
+		Integer[] sleepBool = new Integer[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+				1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1,
+				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+				1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+				1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+				1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		BarChartSeries sleep = new BarChartSeries();
+		sleep.setLabel("Sleep");
+		for (int i = 0; i < dates.length; i++) {
+			sleep.set(dates[i], sleepBool[i]);
+		}
+
+		Integer[] activeBool = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 0, 0, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+				0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		BarChartSeries activity = new BarChartSeries();
+		activity.setLabel("Activity");
+		for (int i = 0; i < dates.length; i++) {
+			activity.set(dates[i], activeBool[i]);
+		}
+
+		sleep.setXaxis(AxisType.X);
+		sleep.setYaxis(AxisType.Y2);
+
+		activity.setXaxis(AxisType.X);
+		activity.setYaxis(AxisType.Y3);
+
+		model.getAxes().put(AxisType.Y2, new LinearAxis("Sleep"));
+		Axis y2Axis = model.getAxis(AxisType.Y2);
+		y2Axis.setMin(0);
+		y2Axis.setMax(1);
+
+		model.getAxes().put(AxisType.Y3, new LinearAxis("Activity"));
+		Axis y3Axis = model.getAxis(AxisType.Y3);
+		y3Axis.setMin(0);
+		y3Axis.setMax(1);
+
+		model.addSeries(heartRateSeries);
+		model.addSeries(restingRateSeries);
+		model.addSeries(sleep);
+		model.addSeries(activity);
+		model.setZoom(true);
+
+		return model;
+	}
+
 }

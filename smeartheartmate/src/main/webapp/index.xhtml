@@ -20,11 +20,6 @@
 				<li><a href="patients.html">Patients</a></li>
 				<li><a href="settings.html">Settings</a></li>
 			</ul>
-			<!-- 			<ul class="side-nav" id="mobile-demo">
-				<li><a href="sass.html">Patients</a></li>
-				<li><a href="badges.html">Settings</a></li>
-			</ul>
- -->
 		</div>
 
 		<div class="nav-content">
@@ -33,13 +28,13 @@
 						class="new badge red">6</span></a></li>
 				<li class="tab"><a href="overview.xhtml">Overview</a></li>
 
-<!-- 				<li class="tab"><a href="#overview">Overview</a></li>
- -->				
- <li class="tab"><a href="#test2">Heart Data</a></li>
-				<li class="tab"><a href="#test3">Exercise and Sleep</a></li>
-				<li class="tab"><a href="#test3">Metabolism</a></li>
-				<li class="tab"><a href="#test4">Patient Input</a></li>
-				<li class="tab"><a href="#test4">Patient Information</a></li>
+				<!--  <li class="tab"><a href="#overview">Overview</a></li>
+ -->
+				<li class="tab"><a href="#heart">Heart Data</a></li>
+				<li class="tab"><a href="#exercise">Exercise and Sleep</a></li>
+				<li class="tab"><a href="#meta">Metabolism</a></li>
+				<li class="tab"><a href="#input">Patient Input</a></li>
+				<li class="tab"><a href="#info">Patient Information</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -125,19 +120,18 @@
 			</div>
 		</div>
 		<div id="overview" class="col s12">
-
-			<p:chart type="line" model="#{chartView.lineModel1}"
+			<!--  			<p:chart type="line" model="#{chartView.lineModel1}"
 				style="height:300px;" />
-<!-- 
+ -->
 			<p:chart type="line" model="#{chartView.lineModel2}"
-				style="height:300px;" />
-
-			<p:chart type="line" model="#{chartView.multiAxisModel}"
-				style="height:400px;" /> -->
-
+				style="height:700px;" />
+			<!-- 			<p:chart type="line" model="#{chartView.multiAxisModel}"
+				style="height:400px;" />
+ -->
 		</div>
-		<div id="test3" class="col s12">
-			Test 3
+
+		<div id="heart" class="col s12">
+			Heart data
 			<h:form id="jsfForm">
 				<h:inputText id="name" value="#{mainController.name}" />
 				<h:commandButton value="Say Hi">
@@ -161,7 +155,11 @@
 				</h:panelGroup>
 			</h:form>
 		</div>
-		<div id="test4" class="col s12">Test 4</div>
+		<div id="exercise" class="col s12">Exercise</div>
+
+		<div id="meta" class="col s12">Meta</div>
+		<div id="input" class="col s12">Input</div>
+		<div id="info" class="col s12">Info</div>
 
 		<footer class="page-footer teal lighten-3">
 		<div class="container">
