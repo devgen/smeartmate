@@ -1,142 +1,77 @@
-package de.tum.entities;
-
-import java.io.Serializable;
+package de.tum.rest.messages;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-public class PatientReportEntity implements Serializable {
-
-	private static final long serialVersionUID = 5613415434108818087L;
-	@Id
-	@javax.persistence.GeneratedValue(generator = "system-uuid")
-	@org.hibernate.annotations.GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(columnDefinition = "VARCHAR(36)", unique = true, nullable = false)
-	private String id;
+@XmlRootElement(name = "reportrestmsg")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class ReportRestMsg {
 	
 	
-	
-	@ManyToOne(optional = false)
-	@NotNull
-	private PatientEntity patiententity;
-	
-	public PatientEntity getPatientEntity() {
-		return patiententity;
-	}
-	public void setPatientEntity(PatientEntity patientEntity) {
-		this.patiententity = patientEntity;
-	}
-	
-	
-	@Column
+	@XmlAttribute
 	private boolean visitPlaned;
 	
-	@Column
+	@XmlAttribute
 	private String qDiagnosticTreat;
-	@Column
+	@XmlAttribute
 	private String generalInput;
-	@Column
+	@XmlAttribute
 	private String famMedHistory;
 	
-	@Column
+	@XmlAttribute
 	private boolean newAllLastVis;
 	
-	@Column
+	@XmlAttribute
 	private boolean effectInfection;
 	
-	@Column
+	@XmlAttribute
 	private boolean headache;
-	@Column
+	@XmlAttribute
 	private boolean dizziness;
-	@Column
+	@XmlAttribute
 	private boolean heartPain;
-	@Column
+	@XmlAttribute
 	private boolean agonalRespiration;
 	
-	@Column
+	@XmlAttribute
 	private boolean experienceConstipation;
 	
-	@Column
+	@XmlAttribute
 	private boolean bloodInStool;
 	
-	@Column
+	@XmlAttribute
 	private boolean bloodInAbdomenPain;
-	@Column
+	@XmlAttribute
 	private boolean experienceJaundice;
 	
-	@Column
+	@XmlAttribute
 	private boolean changesUrinaryFrequency;
 	
-	@Column
+	@XmlAttribute
 	private boolean experienceLimping;
 	
-	@Column
+	@XmlAttribute
 	private boolean movRestriction;
-	@Column
+	@XmlAttribute
 	private boolean jointInflammation;
 	
-	@Column
+	@XmlAttribute
 	private boolean jointPain;
 	
-	@Column
+	@XmlAttribute
 	private boolean expRedness;
 	
-	@Column
+	@XmlAttribute
 	private boolean expIrritation;
-	@Column
+	@XmlAttribute
 	private String syncpTdescription;
-	@Column
+	@XmlAttribute
 	private String symptomDuration;
-	@Column
+	@XmlAttribute
 	private int symptomSeverity;
-	
-	
-	
-	
-	public PatientReportEntity(PatientEntity patiententity, boolean visitPlaned, String qDiagnosticTreat,
-			String generalInput, String famMedHistory, boolean newAllLastVis, boolean effectInfection, boolean headache,
-			boolean dizziness, boolean heartPain, boolean agonalRespiration, boolean experienceConstipation,
-			boolean bloodInStool, boolean bloodInAbdomenPain, boolean experienceJaundice,
-			boolean changesUrinaryFrequency, boolean experienceLimping, boolean movRestriction,
-			boolean jointInflammation, boolean jointPain, boolean expRedness, boolean expIrritation,
-			String syncpTdescription, String symptomDuration, int symptomSeverity) {
-		super();
-		this.patiententity = patiententity;
-		this.visitPlaned = visitPlaned;
-		this.qDiagnosticTreat = qDiagnosticTreat;
-		this.generalInput = generalInput;
-		this.famMedHistory = famMedHistory;
-		this.newAllLastVis = newAllLastVis;
-		this.effectInfection = effectInfection;
-		this.headache = headache;
-		this.dizziness = dizziness;
-		this.heartPain = heartPain;
-		this.agonalRespiration = agonalRespiration;
-		this.experienceConstipation = experienceConstipation;
-		this.bloodInStool = bloodInStool;
-		this.bloodInAbdomenPain = bloodInAbdomenPain;
-		this.experienceJaundice = experienceJaundice;
-		this.changesUrinaryFrequency = changesUrinaryFrequency;
-		this.experienceLimping = experienceLimping;
-		this.movRestriction = movRestriction;
-		this.jointInflammation = jointInflammation;
-		this.jointPain = jointPain;
-		this.expRedness = expRedness;
-		this.expIrritation = expIrritation;
-		this.syncpTdescription = syncpTdescription;
-		this.symptomDuration = symptomDuration;
-		this.symptomSeverity = symptomSeverity;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public boolean isVisitPlaned() {
 		return visitPlaned;
 	}
@@ -284,6 +219,27 @@ public class PatientReportEntity implements Serializable {
 	
 	
 	
+	public ReportRestMsg() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "ReportRestMsg [visitPlaned=" + visitPlaned + ", qDiagnosticTreat=" + qDiagnosticTreat
+				+ ", generalInput=" + generalInput + ", famMedHistory=" + famMedHistory + ", newAllLastVis="
+				+ newAllLastVis + ", effectInfection=" + effectInfection + ", headache=" + headache + ", dizziness="
+				+ dizziness + ", heartPain=" + heartPain + ", agonalRespiration=" + agonalRespiration
+				+ ", experienceConstipation=" + experienceConstipation + ", bloodInStool=" + bloodInStool
+				+ ", bloodInAbdomenPain=" + bloodInAbdomenPain + ", experienceJaundice=" + experienceJaundice
+				+ ", changesUrinaryFrequency=" + changesUrinaryFrequency + ", experienceLimping=" + experienceLimping
+				+ ", movRestriction=" + movRestriction + ", jointInflammation=" + jointInflammation + ", jointPain="
+				+ jointPain + ", expRedness=" + expRedness + ", expIrritation=" + expIrritation + ", syncpTdescription="
+				+ syncpTdescription + ", symptomDuration=" + symptomDuration + ", symptomSeverity=" + symptomSeverity
+				+ "]";
+	}
 	
 	
+	
+	
+	
+
 }

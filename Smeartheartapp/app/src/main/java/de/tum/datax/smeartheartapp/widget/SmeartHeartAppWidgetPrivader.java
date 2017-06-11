@@ -4,10 +4,7 @@ import android.Manifest;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.MediaRecorder;
-import android.preference.PreferenceManager;
-import android.provider.SyncStateContract;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
@@ -85,10 +82,7 @@ public class SmeartHeartAppWidgetPrivader extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
-        Context appContext = context.getApplicationContext();
-        setWidgetActive(false);
-        context.stopService(new Intent(appContext, WidgetUpdateService.class));
-        super.onDisabled(context);
+
 
 
 
@@ -98,10 +92,7 @@ public class SmeartHeartAppWidgetPrivader extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
-        Context appContext = context.getApplicationContext();
-        setWidgetActive(false);
-        context.stopService(new Intent(appContext, WidgetUpdateService.class));
-        super.onDisabled(context);
+
     }
 
 
@@ -149,14 +140,6 @@ public class SmeartHeartAppWidgetPrivader extends AppWidgetProvider {
 
 
         }
-    }
-
-    private void setWidgetActive(boolean active){
-        Context appContext = context.getApplicationContext();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putBoolean(SyncStateContract.Constants.WIDGET_ACTIVE, active);
-        edit.commit();
     }
 
 

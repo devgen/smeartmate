@@ -5,6 +5,7 @@ import android.util.Log;
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
+import de.tum.datax.smeartheartapp.settings.MySettings;
 
 /**
  * Created by Devgen on 23.09.2016.
@@ -30,7 +31,7 @@ public class WebSocketGateway {
 
     public void start() {
 
-        final String wsuri = "ws://192.168.179.27:8080/smeartheartmate-0.0.1-SNAPSHOT/websocket/123";
+        final String wsuri = "ws://"+MySettings.SERVER_ADRESS+"/websocket/123";
 
         try {
             mConnection.connect(wsuri, new WebSocketHandler() {
@@ -39,6 +40,8 @@ public class WebSocketGateway {
                 public void onOpen() {
                     Log.d(TAG, "Status: Connected to " + wsuri);
                     mConnection.sendTextMessage("Hello, world!");
+
+
                 }
 
                 @Override

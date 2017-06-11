@@ -4,4 +4,48 @@
     <string name="add_widget">Add widget</string>
     <string name="appwidget_txt1">Beschwerde</string>
     <string name="appwidged_but">Aufnehmen</string>
+
+
+
+    <!-- formular names-->
+
+    <string name="visitPlaned">Type of visit:</string>
+    <string name="qDiagnosticTreat">Do you have any questions concerning the diagnosis/treatment?</string>
+    <string name="generalInput">General input (increased stress, family member’s infection…)</string>
+    <string name="famMedHistory">Family member’s medical history</string>
+
+    <string name="newAllLastVis">Have you developed any allergies since the last visit?</string>
+    <string name="effectInfection">Were you affected by any infections? </string>
+
+
+
+    <string name="headache">Did you experience headache? </string>
+    <string name="dizziness">Did you experience dizziness? </string>
+    <string name="heartPain">Did you experience Heart pain? </string>
+    <string name="agonalRespiration">Did you experience agonal respiration?</string>
+
+
+    <string name="experienceConstipation">Did you experience constipation</string>
+    <string name="bloodInStool">Did you experience blood in stool? </string>
+    <string name="bloodInAbdomenPain">Did you experience blood in abdomen pain? </string>
+    <string name="experienceJaundice">Did you experience jaundice? </string>
+    <string name="changesUrinaryFrequency">Did you experience changes in urinary frequency?</string>
+
+    <string name="experienceLimping">Did you experience limping? </string>
+    <string name="movRestriction">Did you experience movement restriction? </string>
+    <string name="jointInflammation">Did you experience joint inflammation? </string>
+    <string name="jointPain">Did you experience joint pain? </string>
+
+
+    <string name="expRedness">Did you experience redness? </string>
+    <string name="expIrritation">Did you experience irritation? </string>
+
+
+
+    <string name="syncpTdescription">General description (describe your symptoms)</string>
+    <string name="symptomDuration">Duration (since when?, at one stretch?)</string>
+    <string name="symptomSeverity">Severity (from 1-10)</string>
+
+
+
 </resources>

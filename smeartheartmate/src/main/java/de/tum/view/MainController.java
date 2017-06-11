@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
 @ManagedBean
-@ViewScoped
+//@ViewScoped
 public class MainController implements Serializable{
 
 	/**

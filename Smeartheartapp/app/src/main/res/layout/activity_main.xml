@@ -2,19 +2,226 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+   android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.tum.datax.smeartheartapp.udpservice.MainActivity">
+    tools:context="de.tum.datax.smeartheartapp.formular.MainActivity">
 
-    <TextView
-        android:text="TextView"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
-        android:id="@+id/message_test" />
+        android:scrollbars="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="fill_parent"
+            android:weightSum="1">
+
+            <!--Put form controls here-->
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:id="@+id/message_test" />
+
+
+
+
+
+
+            <CheckBox android:id="@+id/visitPlaned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/visitPlaned"
+               />
+
+            <EditText
+                android:id="@+id/qDiagnosticTreat"
+                android:layout_height="wrap_content"
+                android:hint="@string/qDiagnosticTreat"
+                android:inputType="text"
+                android:lines="5"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.30">
+            </EditText>
+            <EditText
+                android:id="@+id/generalInput"
+                android:layout_height="wrap_content"
+                android:hint="@string/generalInput"
+                android:inputType="text"
+                android:lines="5"
+                android:layout_width="fill_parent"
+                android:layout_weight="0.300">
+            </EditText>
+            <EditText
+                android:id="@+id/famMedHistory"
+                android:layout_height="wrap_content"
+                android:hint="@string/famMedHistory"
+                android:inputType="text"
+                android:lines="5"
+                android:layout_width="fill_parent">
+            </EditText>
+
+            <CheckBox android:id="@+id/newAllLastVis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newAllLastVis"
+                />
+
+            <CheckBox android:id="@+id/effectInfection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/effectInfection"
+                />
+
+            <CheckBox android:id="@+id/headache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/headache"
+                />
+
+            <CheckBox android:id="@+id/dizziness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dizziness"
+                />
+
+            <CheckBox android:id="@+id/heartPain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heartPain"
+                />
+
+
+            <CheckBox android:id="@+id/agonalRespiration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/agonalRespiration"
+                />
+
+
+            <CheckBox android:id="@+id/experienceConstipation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experienceConstipation"
+                />
+
+
+            <CheckBox android:id="@+id/bloodInStool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bloodInStool"
+                />
+
+            <CheckBox android:id="@+id/bloodInAbdomenPain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bloodInAbdomenPain"
+                />
+
+
+            <CheckBox android:id="@+id/experienceJaundice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experienceJaundice"
+                />
+
+
+            <CheckBox android:id="@+id/changesUrinaryFrequency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/changesUrinaryFrequency"
+                />
+
+
+            <CheckBox android:id="@+id/experienceLimping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experienceLimping"
+                />
+
+
+            <CheckBox android:id="@+id/movRestriction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movRestriction"
+                />
+
+
+            <CheckBox android:id="@+id/jointInflammation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jointInflammation"
+                />
+
+
+
+            <CheckBox android:id="@+id/jointPain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jointPain"
+                />
+
+            <CheckBox android:id="@+id/expRedness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expRedness"
+                />
+
+
+
+            <CheckBox android:id="@+id/expIrritation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expIrritation"
+                />
+
+
+            <EditText
+                android:id="@+id/syncpTdescription"
+                android:layout_height="wrap_content"
+                android:hint="@string/syncpTdescription"
+                android:inputType="text"
+                android:layout_width="fill_parent">
+            </EditText>
+
+            <EditText
+                android:id="@+id/symptomDuration"
+                android:layout_height="wrap_content"
+                android:hint="@string/symptomDuration"
+                android:inputType="text"
+                android:lines="5"
+                android:layout_width="fill_parent">
+            </EditText>
+
+            <EditText
+                android:id="@+id/symptomSeverity"
+                android:layout_height="wrap_content"
+                android:hint="@string/symptomSeverity"
+                android:inputType="text"
+                android:lines="5"
+                android:layout_width="fill_parent">
+            </EditText>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>

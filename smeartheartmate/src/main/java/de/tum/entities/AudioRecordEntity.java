@@ -56,4 +56,11 @@ public class AudioRecordEntity implements Serializable{
 		this.file = file;
 	}
 
+	public AudioRecordEntity(Byte[] file, PatientEntity patiententity) {
+		super();
+		this.file = file;
+		this.patiententity = patiententity;
+	}
+
+	
 }

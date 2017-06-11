@@ -16,7 +16,7 @@ public class MySettings {
     public static final int LOCAL_PORT = 32001;
     public static int MAX_UDP_DATAGRAM_LEN = 9216;
     public static String WIFI_PASSWORD = "wrongpassw";
-    public static String BROADCAST_IP = "172.19.153.255";
+    public static String SERVER_ADRESS = "192.168.179.27:8080/smeartheartmate-0.0.1-SNAPSHOT";
 
 
 }

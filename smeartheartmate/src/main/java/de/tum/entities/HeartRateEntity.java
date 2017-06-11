@@ -29,6 +29,10 @@ public class HeartRateEntity implements Serializable {
 	private Date dateTime;
 	@Column
 	private int heartRate;
+	
+	@Column
+	private int restingHeartRate;
+	
 	@Column
 	private boolean activity;
 	@Column
@@ -73,6 +77,18 @@ public class HeartRateEntity implements Serializable {
 	}
 	public void setSleep(boolean sleep) {
 		this.sleep = sleep;
+	}
+	public int getRestingHeartRate() {
+		return restingHeartRate;
+	}
+	public void setRestingHeartRate(int restingHeartRate) {
+		this.restingHeartRate = restingHeartRate;
+	}
+	public PatientEntity getPatiententity() {
+		return patiententity;
+	}
+	public void setPatiententity(PatientEntity patiententity) {
+		this.patiententity = patiententity;
 	}
 	
 	
