@@ -85,7 +85,7 @@ public class PatientReportRestServiceIml {
 				);
 		
 		
-		return null;
+		return Response.status(Status.CREATED).entity("OK").build();
 		
 	}
 	
